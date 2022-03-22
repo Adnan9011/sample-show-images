@@ -2,7 +2,9 @@ package com.example.kilario.di
 
 import android.content.Context
 import com.example.kilario.BuildConfig
+import com.example.kilario.common.CalendarGsonDeserializer
 import com.example.kilario.data.api.ResponseCodeInterceptor
+import com.example.kilario.data.api.shares.SharesApi
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -16,9 +18,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
+import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
-import kotlin.coroutines.ContinuationInterceptor
 
 @InstallIn(SingletonComponent::class)
 @Module
@@ -72,7 +74,15 @@ class RestClientModule {
     @Singleton
     internal fun provideGson(): Gson {
         return GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.IDENTITY)
+            .registerTypeAdapter(Calendar::class.java, CalendarGsonDeserializer())
             .create()
     }
+
+    // Provides Apis
+    @Provides
+    @Singleton
+    internal fun provideSharesApi(
+        retrofit: Retrofit
+    ) = retrofit.create(SharesApi::class.java)
 
 }
