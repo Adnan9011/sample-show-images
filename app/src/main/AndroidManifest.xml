@@ -9,9 +9,10 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:screenOrientation="portrait"
         android:theme="@style/Theme.Kilario">
         <activity
-            android:name=".MainActivity"
+            android:name=".presenter.splash.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +20,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".presenter.main.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Kilario"
+            />
+        <activity
+            android:name=".presenter.detail.DetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.Kilario"
+            />
     </application>
 
 </manifest>

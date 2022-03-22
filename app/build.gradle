@@ -18,6 +18,8 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "BASEURL", "\"https://api1.kiliaro.com/\""
+        // Fake data
+        buildConfigField "String", "SHARED_ID", "\"djlCbGusTJamg_ca4axEVw\""
     }
 
     buildTypes {
@@ -32,6 +34,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
@@ -54,8 +59,14 @@ ext {
     hiltWorkVersion = '1.0.0'
 
     // Retrofit
-    retrofitVersion = '2.6.1'
+    retrofitVersion = '2.6.2'
     loggingInterceptorVersion = '3.9.1'
+
+    // Ktx
+    ktxCoreVersion = '1.7.0'
+    ktxFragmentVerstion = '1.4.1'
+    ktxActivityVerstion = '1.4.0'
+    ktxLifecycleVerstion = '2.4.1'
 
 }
 
@@ -82,5 +93,11 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$loggingInterceptorVersion"
+
+    // Ktx
+    implementation "androidx.core:core-ktx:$ktxCoreVersion"
+    implementation "androidx.activity:activity-ktx:$ktxActivityVerstion"
+    implementation "androidx.fragment:fragment-ktx:$ktxFragmentVerstion"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$ktxLifecycleVerstion"
 
 }
