@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 
 }
-rootProject.name = "Kilario"
+rootProject.name = "Kiliaro"
 include ':app'
