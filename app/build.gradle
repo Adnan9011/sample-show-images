@@ -68,6 +68,8 @@ ext {
     ktxActivityVerstion = '1.4.0'
     ktxLifecycleVerstion = '2.4.1'
 
+    // Glide
+    glideVersion = '4.9.0'
 }
 
 dependencies {
@@ -99,5 +101,8 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$ktxActivityVerstion"
     implementation "androidx.fragment:fragment-ktx:$ktxFragmentVerstion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$ktxLifecycleVerstion"
+
+    // Glide
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 
 }

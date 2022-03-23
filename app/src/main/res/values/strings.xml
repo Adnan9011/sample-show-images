@@ -2,4 +2,5 @@
     <string name="app_name">Kilario</string>
     <string name="error_message_network">Unable connect to Internet</string>
     <string name="error_message_timeout">TimeOut , Unable connect to Internet</string>
+    <string name="text_tv_album_size">1.1 MB</string>
 </resources>
