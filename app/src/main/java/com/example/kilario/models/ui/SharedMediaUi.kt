@@ -15,6 +15,10 @@ data class SharedMediaUi(
     val md5sum: String,
     val thumbnailUrl: String,
     val downloadUrl: String,
-    val resx: Int,
-    val resy: Int
-    )
+    val resX: Int,
+    val resY: Int
+    ) {
+    fun getSizeOfImage(): String {
+        return String.format("%.1f", (size/1024f)/1024f)+" MB"
+    }
+}

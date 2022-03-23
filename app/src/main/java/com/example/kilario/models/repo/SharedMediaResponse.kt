@@ -5,12 +5,15 @@ import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class SharedMediaResponse(
+    @SerializedName("id")
     val id: String,
     @SerializedName("user_id")
     val userId: String,
     @SerializedName("media_type")
     val mediaType: MediaType,
+    @SerializedName("filename")
     val filename: String,
+    @SerializedName("size")
     val size: Long,
     @SerializedName("created_at")
     val createAt: Calendar?,
@@ -18,6 +21,7 @@ data class SharedMediaResponse(
     val takenAt: Calendar?,
     @SerializedName("guessed_taken_at")
     val guessedTakenAt: Calendar?,
+    @SerializedName("md5sum")
     val md5sum: String,
 //    val contentType: MediaContentType,
 //    val video: SharedMediaVideo,
@@ -25,8 +29,10 @@ data class SharedMediaResponse(
     val thumbnailUrl: String,
     @SerializedName("download_url")
     val downloadUrl: String,
-    val resx: Int,
-    val resy: Int
+    @SerializedName("resx")
+    val resX: Int,
+    @SerializedName("resy")
+    val resY: Int
     ) {
     fun toSharedMediaUi(): SharedMediaUi = SharedMediaUi(
         id = id,
@@ -40,8 +46,8 @@ data class SharedMediaResponse(
         md5sum = md5sum,
         thumbnailUrl = thumbnailUrl,
         downloadUrl = downloadUrl,
-        resx = resx,
-        resy = resy
+        resX = resX,
+        resY = resY
     )
 }
 

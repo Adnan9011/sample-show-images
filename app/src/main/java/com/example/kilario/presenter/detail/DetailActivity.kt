@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.example.kilario.databinding.ActivityDetailBinding
 import com.example.kilario.presenter.BaseActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailActivity: BaseActivity<DetailState, DetailViewModel>() {
     override val viewModel: DetailViewModel by viewModels()
 
