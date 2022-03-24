@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Kilario</string>
+    <string name="app_name">Kiliaro</string>
     <string name="error_message_network">Unable connect to Internet</string>
     <string name="error_message_timeout">TimeOut , Unable connect to Internet</string>
-    <string name="text_tv_album_size">1.1 MB</string>
+    <string name="text_tv_media_size">1.1 MB</string>
+    <string name="text_tv_media_date">23 March 2022, 21:55</string>
+    <string name="msg_sharedmedia_is_null">Please Try Another Time</string>
 </resources>

@@ -1,4 +1,4 @@
-// Top-level build file where you can add configuration options com.example.kilario.common to all sub-projects/modules.
+// Top-level build file where you can add configuration options com.example.kiliaro.common to all sub-projects/modules.
 buildscript {
     ext.hiltVersion = '2.40.5'
     dependencies {
