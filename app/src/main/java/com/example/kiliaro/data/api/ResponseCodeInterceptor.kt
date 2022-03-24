@@ -1,4 +1,4 @@
-package com.example.kiliaro.api
+package com.example.kiliaro.data.api
 
 import com.example.kiliaro.common.ErrorMessages
 import com.example.kiliaro.common.NetworkException

@@ -1,4 +1,4 @@
-package com.example.kiliaro.api.shares
+package com.example.kiliaro.data.api.shares
 
 import com.example.kiliaro.models.repo.SharedMediaResponse
 import retrofit2.http.GET

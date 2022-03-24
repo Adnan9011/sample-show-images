@@ -3,8 +3,8 @@ package com.example.kiliaro.di
 import android.content.Context
 import com.example.kiliaro.BuildConfig
 import com.example.kiliaro.common.CalendarGsonDeserializer
-import com.example.kiliaro.api.ResponseCodeInterceptor
-import com.example.kiliaro.api.shares.SharesApi
+import com.example.kiliaro.data.api.ResponseCodeInterceptor
+import com.example.kiliaro.data.api.shares.SharesApi
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder

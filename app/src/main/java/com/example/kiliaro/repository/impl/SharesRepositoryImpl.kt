@@ -1,6 +1,6 @@
 package com.example.kiliaro.repository.impl
 
-import com.example.kiliaro.api.shares.SharesApi
+import com.example.kiliaro.data.api.shares.SharesApi
 import com.example.kiliaro.models.ui.SharedMediaUi
 import com.example.kiliaro.repository.SharesRepository
 import javax.inject.Inject
