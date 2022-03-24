@@ -27,7 +27,7 @@ class DatabaseModule {
 
     @Singleton
     @Provides
-    fun privideSharedMediaDao(db: SharedMediaDatabase): SharedMediaDao {
+    fun provideSharedMediaDao(db: SharedMediaDatabase): SharedMediaDao {
         return db.sharedMediaDao()
     }
 }

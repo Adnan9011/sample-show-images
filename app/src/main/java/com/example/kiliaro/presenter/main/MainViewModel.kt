@@ -41,7 +41,7 @@ class MainViewModel @Inject constructor(
                     getMedia(getFromServer = false)
 
                 if(exp is SSLHandshakeException) {
-                    message.postValue("Faild, Unable to connect to Internet")
+                    message.postValue("Failed, Unable to connect to Internet")
                 } else
                     message.postValue(exp.message)
             }

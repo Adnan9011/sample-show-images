@@ -34,7 +34,7 @@ class DetailMediaActivity : BaseActivity<DetailMediaState, DetailMediaViewModel>
     }
 
     private fun getParameters() {
-        sharedMediaUi = intent.getParcelableExtra<SharedMediaUi>(EXTRA_MEDIA)!!
+        sharedMediaUi = intent.getParcelableExtra(EXTRA_MEDIA)!!
     }
 
     private fun initViews() {
