@@ -1,4 +1,4 @@
-package com.example.kiliaro.data.db.sharedmedia
+package com.example.kiliaro.models.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -11,6 +11,7 @@ const val SHARED_MEDIA_COLUMN_SHARED_ID = "sharedId"
 const val SHARED_MEDIA_COLUMN_SIZE = "size"
 const val SHARED_MEDIA_COLUMN_CREATE_AT = "createAt"
 const val SHARED_MEDIA_COLUMN_THUMBNAIL_URL = "thumbnailUrl"
+const val SHARED_MEDIA_COLUMN_DOWNLOAD_URL = "downloadUrl"
 
 @Entity(tableName = SHARED_MEDIA_TABLE_NAME)
 data class SharedMediaEntity(
@@ -19,7 +20,8 @@ data class SharedMediaEntity(
     val sharedId: String,
     val size: Long,
     val createAt: Long,
-    val thumbnailUrl: String
+    val thumbnailUrl: String,
+    val downloadUrl: String
 ) {
     fun toSharedMediaUi() = SharedMediaUi(
         id = id,
@@ -28,5 +30,6 @@ data class SharedMediaEntity(
             timeInMillis = createAt
         },
         thumbnailUrl = thumbnailUrl,
+        downloadUrl = downloadUrl
     )
 }

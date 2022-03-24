@@ -4,6 +4,9 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.kiliaro.models.entity.SHARED_MEDIA_COLUMN_SHARED_ID
+import com.example.kiliaro.models.entity.SHARED_MEDIA_TABLE_NAME
+import com.example.kiliaro.models.entity.SharedMediaEntity
 
 @Dao
 interface SharedMediaDao {

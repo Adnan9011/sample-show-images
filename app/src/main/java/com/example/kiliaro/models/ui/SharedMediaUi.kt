@@ -2,7 +2,7 @@ package com.example.kiliaro.models.ui
 
 import android.os.Parcelable
 import com.example.kiliaro.common.getMonthName
-import com.example.kiliaro.models.repo.MediaType
+import com.example.kiliaro.models.entity.SharedMediaEntity
 import kotlinx.parcelize.Parcelize
 import java.util.*
 
@@ -11,7 +11,8 @@ data class SharedMediaUi(
     val id:String,
     val size: Long,
     val createAt: Calendar?,
-    val thumbnailUrl: String
+    val thumbnailUrl: String,
+    val downloadUrl: String
     ): Parcelable {
     fun getSizeOfImage(): String {
         return String.format("%.1f", (size/1024f)/1024f)+" MB"
@@ -60,4 +61,13 @@ data class SharedMediaUi(
         CROP("crop"),
         MINIMUM("md");
     }
+
+    fun toSharedMediaEntiry(sharedId: String) = SharedMediaEntity(
+        id = id,
+        sharedId = sharedId,
+        size = size,
+        createAt = createAt?.let { it.timeInMillis } ?: 0,
+        thumbnailUrl = thumbnailUrl,
+        downloadUrl = downloadUrl
+    )
 }

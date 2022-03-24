@@ -5,7 +5,7 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface SharesApi {
-    @GET("shared/{sharedkey}/media")
-    suspend fun getListMedia(@Path("sharedkey") sharedKey: String):
+    @GET("shared/{ssharedId}/media")
+    suspend fun getListMedia(@Path("ssharedId") sharedId: String):
             List<SharedMediaResponse>
 }

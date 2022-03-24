@@ -5,4 +5,6 @@
     <string name="text_tv_media_size">1.1 MB</string>
     <string name="text_tv_media_date">23 March 2022, 21:55</string>
     <string name="msg_sharedmedia_is_null">Please Try Another Time</string>
+    <string name="try_again">Try Again</string>
+    <string name="faild_to_get_data_from_server">Faild to get data from server</string>
 </resources>

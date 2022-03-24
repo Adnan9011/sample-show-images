@@ -36,7 +36,8 @@ data class SharedMediaResponse(
         id = id,
         size = size,
         createAt = createAt,
-        thumbnailUrl = thumbnailUrl
+        thumbnailUrl = thumbnailUrl,
+        downloadUrl = downloadUrl
     )
 }
 

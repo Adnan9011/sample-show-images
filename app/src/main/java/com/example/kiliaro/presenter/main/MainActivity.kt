@@ -2,6 +2,7 @@ package com.example.kiliaro.presenter.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import com.example.kiliaro.databinding.ActivityMainBinding
@@ -37,6 +38,10 @@ class MainActivity: BaseActivity<MainState, MainViewModel>() {
         mediaAdapter.setOnClickListener { sharedMediaUi ->
             launchDetailActivity(sharedMediaUi)
         }
+
+        binding.btnTryAgain.setOnClickListener {
+            getMedia()
+        }
     }
 
     private fun launchDetailActivity(sharedMediaUi: SharedMediaUi) {
@@ -46,8 +51,20 @@ class MainActivity: BaseActivity<MainState, MainViewModel>() {
     }
 
     private fun observer() {
-        viewModel.listMediaSingleLiveEvent.observe(this, Observer {
-            mediaAdapter.submitList(it)
+        viewModel.progressSingleLiveEvent.observe(this, Observer {
+            binding.progressCircular.visibility = if(it) View.VISIBLE else View.GONE
+        })
+
+        viewModel.listMediaSingleLiveEvent.observe(this, Observer { result ->
+            mediaAdapter.submitList(result.first)
+            when(result.second) {
+                true -> {
+                    binding.cardviewUnableToConnect.visibility = View.GONE
+                }
+                false -> {
+                    binding.cardviewUnableToConnect.visibility = View.VISIBLE
+                }
+            }
         })
     }
 

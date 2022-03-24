@@ -1,6 +1,7 @@
 package com.example.kiliaro.presenter.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.kiliaro.BuildConfig
 import com.example.kiliaro.common.SingleLiveEvent
@@ -12,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 import javax.inject.Inject
+import javax.net.ssl.SSLHandshakeException
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
@@ -19,15 +21,29 @@ class MainViewModel @Inject constructor(
     private val sharesRepository: SharesRepository
 ): BaseViewModel<MainState>(MainState.IDLE, app) {
 
-    val listMediaSingleLiveEvent = SingleLiveEvent<List<SharedMediaUi>>()
+    val listMediaSingleLiveEvent = SingleLiveEvent<Pair<List<SharedMediaUi>,Boolean>>()
+    val progressSingleLiveEvent = SingleLiveEvent<Boolean>()
 
-    fun getMedia() {
+    fun getMedia(getFromServer:Boolean = true) {
         viewModelScope.launch(Dispatchers.Default) {
+            progressSingleLiveEvent.postValue(true)
+
             try {
-                val listMedia = sharesRepository.getListMedia(BuildConfig.SHARED_ID)
-                listMediaSingleLiveEvent.postValue(listMedia)
+                val result = sharesRepository.getListMedia(sharedId = BuildConfig.SHARED_ID,getFromServer = getFromServer)
+
+                listMediaSingleLiveEvent.postValue(result)
+                progressSingleLiveEvent.postValue(false)
+
             } catch (exp: Exception) {
-                message.postValue(exp.message)
+                progressSingleLiveEvent.postValue(false)
+
+                if(getFromServer)
+                    getMedia(getFromServer = false)
+
+                if(exp is SSLHandshakeException) {
+                    message.postValue("Faild, Unable to connect to Internet")
+                } else
+                    message.postValue(exp.message)
             }
         }
     }

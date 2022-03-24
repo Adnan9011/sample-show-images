@@ -26,9 +26,9 @@ import javax.inject.Singleton
 class RestClientModule {
 
     companion object {
-        private const val CONNECTION_TIME_OUT: Long = 30
-        private const val READ_TIME_OUT: Long = 60
-        private const val WRITE_TIME_OUT: Long = 60
+        private const val CONNECTION_TIME_OUT: Long = 10
+        private const val READ_TIME_OUT: Long = 20
+        private const val WRITE_TIME_OUT: Long = 20
         private const val BASE_URL = BuildConfig.BASEURL
     }
 
