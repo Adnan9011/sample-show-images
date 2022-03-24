@@ -9,18 +9,9 @@ import java.util.*
 @Parcelize
 data class SharedMediaUi(
     val id:String,
-    val userId: String,
-    val mediaType: MediaType,
-    val filename: String,
     val size: Long,
     val createAt: Calendar?,
-    val takenAt: Calendar?,
-    val guessedTakenAt: Calendar?,
-    val md5sum: String,
-    val thumbnailUrl: String,
-    val downloadUrl: String,
-    val resX: Int,
-    val resY: Int
+    val thumbnailUrl: String
     ): Parcelable {
     fun getSizeOfImage(): String {
         return String.format("%.1f", (size/1024f)/1024f)+" MB"

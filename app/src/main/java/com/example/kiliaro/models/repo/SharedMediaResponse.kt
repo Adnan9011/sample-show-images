@@ -23,8 +23,6 @@ data class SharedMediaResponse(
     val guessedTakenAt: Calendar?,
     @SerializedName("md5sum")
     val md5sum: String,
-//    val contentType: MediaContentType,
-//    val video: SharedMediaVideo,
     @SerializedName("thumbnail_url")
     val thumbnailUrl: String,
     @SerializedName("download_url")
@@ -36,18 +34,9 @@ data class SharedMediaResponse(
     ) {
     fun toSharedMediaUi(): SharedMediaUi = SharedMediaUi(
         id = id,
-        userId = userId,
-        mediaType = mediaType,
-        filename = filename,
         size = size,
         createAt = createAt,
-        takenAt = takenAt,
-        guessedTakenAt = guessedTakenAt,
-        md5sum = md5sum,
-        thumbnailUrl = thumbnailUrl,
-        downloadUrl = downloadUrl,
-        resX = resX,
-        resY = resY
+        thumbnailUrl = thumbnailUrl
     )
 }
 
