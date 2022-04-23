@@ -11,8 +11,8 @@ fun Calendar.fromIsoString(date: String): Calendar = apply {
     time = dateFormatter.parse(date)
 }
 
-fun Calendar.getMonthName(): String  {
-    return when(this.get(Calendar.MONTH)) {
+fun Calendar.getMonthName(): String {
+    return when (this.get(Calendar.MONTH)) {
         0 -> "January"
         1 -> "February"
         2 -> "March"

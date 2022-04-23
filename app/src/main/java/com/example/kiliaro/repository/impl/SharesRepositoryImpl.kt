@@ -9,12 +9,15 @@ import javax.inject.Inject
 class SharesRepositoryImpl @Inject constructor(
     private val sharesApi: SharesApi,
     private val sharedMediaDao: SharedMediaDao
-): SharesRepository {
+) : SharesRepository {
 
-    override suspend fun getListMedia(sharedId: String, getFromServer: Boolean): Pair<List<SharedMediaUi>,Boolean> {
-        var isLoadFromServer : Boolean
+    override suspend fun getListMedia(
+        sharedId: String,
+        getFromServer: Boolean
+    ): Pair<List<SharedMediaUi>, Boolean> {
+        var isLoadFromServer: Boolean
         var listSharedMedia = listOf<SharedMediaUi>()
-        if(getFromServer) {
+        if (getFromServer) {
             isLoadFromServer = true
             listSharedMedia =
                 sharesApi.getListMedia(sharedId = sharedId).map { it.toSharedMediaUi() }
@@ -22,12 +25,12 @@ class SharesRepositoryImpl @Inject constructor(
             updateDatabase(listSharedMedia, sharedId)
         } else {
             isLoadFromServer = false
-            listSharedMedia = sharedMediaDao.getAll(sharedId).map {it.toSharedMediaUi()}
+            listSharedMedia = sharedMediaDao.getAll(sharedId).map { it.toSharedMediaUi() }
         }
-        return Pair(listSharedMedia,isLoadFromServer)
+        return Pair(listSharedMedia, isLoadFromServer)
     }
 
-    override suspend fun updateDatabase(listSharedMedia: List<SharedMediaUi>,sharedId: String) {
+    override suspend fun updateDatabase(listSharedMedia: List<SharedMediaUi>, sharedId: String) {
         sharedMediaDao.deleteAll(sharedId)
         sharedMediaDao.insertAll(listSharedMedia.map { it.toSharedMediaEntiry(sharedId) })
     }

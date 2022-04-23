@@ -8,4 +8,4 @@ import javax.inject.Inject
 @HiltViewModel
 class SplashViewModel @Inject constructor(
     app: Application
-): BaseViewModel<SplashState>(SplashState.IDLE, app)
+) : BaseViewModel<SplashState>(SplashState.IDLE, app)

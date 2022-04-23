@@ -6,7 +6,7 @@ import com.google.gson.JsonElement
 import java.lang.reflect.Type
 import java.util.*
 
-class CalendarGsonDeserializer: JsonDeserializer<Calendar> {
+class CalendarGsonDeserializer : JsonDeserializer<Calendar> {
 
     override fun deserialize(
         json: JsonElement?,

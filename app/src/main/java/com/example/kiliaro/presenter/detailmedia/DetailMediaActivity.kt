@@ -38,13 +38,13 @@ class DetailMediaActivity : BaseActivity<DetailMediaState, DetailMediaViewModel>
     }
 
     private fun initViews() {
-        if(sharedMediaUi != null) {
+        if (sharedMediaUi != null) {
             binding.progressCircular.visibility = View.VISIBLE
 
             Glide
                 .with(this)
                 .load(sharedMediaUi.downloadUrl)
-                .listener(object: RequestListener<Drawable> {
+                .listener(object : RequestListener<Drawable> {
                     override fun onLoadFailed(
                         e: GlideException?,
                         model: Any?,
@@ -76,7 +76,7 @@ class DetailMediaActivity : BaseActivity<DetailMediaState, DetailMediaViewModel>
     }
 
     override fun onStateChange(mediaState: DetailMediaState) {
-        when(mediaState) {
+        when (mediaState) {
             DetailMediaState.IDLE -> {}
         }
     }

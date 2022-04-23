@@ -10,38 +10,36 @@
         android:id="@+id/progress_circular"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
-        android:layout_gravity="center" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/img_media"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic"
-        />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/backgrounds/scenic" />
 
     <TextView
         android:id="@+id/tv_media_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_media"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:text="@string/text_tv_media_date"
-        android:textColor="@color/white"
+        android:background="@drawable/gradient_text"
         android:gravity="center"
         android:padding="@dimen/padding_small"
+        android:textColor="@color/white"
         android:textSize="@dimen/text_size_medium"
-        android:background="@drawable/gradient_text"
         android:visibility="gone"
-        />
+        app:layout_constraintBottom_toBottomOf="@+id/img_media"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="@string/text_tv_media_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

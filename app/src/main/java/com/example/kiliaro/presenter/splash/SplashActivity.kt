@@ -9,7 +9,7 @@ import com.example.kiliaro.presenter.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SplashActivity: BaseActivity<SplashState, SplashViewModel>() {
+class SplashActivity : BaseActivity<SplashState, SplashViewModel>() {
     override val viewModel: SplashViewModel by viewModels()
 
     lateinit var binding: ActivitySplashBinding
@@ -19,8 +19,6 @@ class SplashActivity: BaseActivity<SplashState, SplashViewModel>() {
 
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        launchMainActivity()
     }
 
     private fun launchMainActivity() =
@@ -28,8 +26,10 @@ class SplashActivity: BaseActivity<SplashState, SplashViewModel>() {
 
 
     override fun onStateChange(state: SplashState) {
-        when(state) {
-            SplashState.IDLE -> {}
+        when (state) {
+            SplashState.IDLE -> {
+                launchMainActivity()
+            }
         }
     }
 }

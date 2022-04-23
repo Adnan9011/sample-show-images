@@ -1,7 +1,6 @@
 package com.example.kiliaro.presenter.main
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.kiliaro.BuildConfig
 import com.example.kiliaro.common.SingleLiveEvent
@@ -11,7 +10,6 @@ import com.example.kiliaro.repository.SharesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 import javax.net.ssl.SSLHandshakeException
 
@@ -19,17 +17,20 @@ import javax.net.ssl.SSLHandshakeException
 class MainViewModel @Inject constructor(
     app: Application,
     private val sharesRepository: SharesRepository
-): BaseViewModel<MainState>(MainState.IDLE, app) {
+) : BaseViewModel<MainState>(MainState.IDLE, app) {
 
-    val listMediaSingleLiveEvent = SingleLiveEvent<Pair<List<SharedMediaUi>,Boolean>>()
+    val listMediaSingleLiveEvent = SingleLiveEvent<Pair<List<SharedMediaUi>, Boolean>>()
     val progressSingleLiveEvent = SingleLiveEvent<Boolean>()
 
-    fun getMedia(getFromServer:Boolean = true) {
+    fun getMedia(getFromServer: Boolean = true) {
         viewModelScope.launch(Dispatchers.Default) {
             progressSingleLiveEvent.postValue(true)
 
             try {
-                val result = sharesRepository.getListMedia(sharedId = BuildConfig.SHARED_ID,getFromServer = getFromServer)
+                val result = sharesRepository.getListMedia(
+                    sharedId = BuildConfig.SHARED_ID,
+                    getFromServer = getFromServer
+                )
 
                 listMediaSingleLiveEvent.postValue(result)
                 progressSingleLiveEvent.postValue(false)
@@ -37,10 +38,10 @@ class MainViewModel @Inject constructor(
             } catch (exp: Exception) {
                 progressSingleLiveEvent.postValue(false)
 
-                if(getFromServer)
+                if (getFromServer)
                     getMedia(getFromServer = false)
 
-                if(exp is SSLHandshakeException) {
+                if (exp is SSLHandshakeException) {
                     message.postValue("Failed, Unable to connect to Internet")
                 } else
                     message.postValue(exp.message)

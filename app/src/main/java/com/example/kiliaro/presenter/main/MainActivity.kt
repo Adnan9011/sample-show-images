@@ -12,7 +12,7 @@ import com.example.kiliaro.presenter.detailmedia.DetailMediaActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity: BaseActivity<MainState, MainViewModel>() {
+class MainActivity : BaseActivity<MainState, MainViewModel>() {
     override val viewModel: MainViewModel by viewModels()
 
     lateinit var binding: ActivityMainBinding
@@ -27,9 +27,6 @@ class MainActivity: BaseActivity<MainState, MainViewModel>() {
 
         init()
         observer()
-
-        // Get Media
-        getMedia()
     }
 
     private fun init() {
@@ -46,18 +43,18 @@ class MainActivity: BaseActivity<MainState, MainViewModel>() {
 
     private fun launchDetailActivity(sharedMediaUi: SharedMediaUi) {
         val intentDetail = Intent(this, DetailMediaActivity::class.java)
-        intentDetail.putExtra(DetailMediaActivity.EXTRA_MEDIA , sharedMediaUi)
+        intentDetail.putExtra(DetailMediaActivity.EXTRA_MEDIA, sharedMediaUi)
         startActivity(intentDetail)
     }
 
     private fun observer() {
         viewModel.progressSingleLiveEvent.observe(this, Observer {
-            binding.progressCircular.visibility = if(it) View.VISIBLE else View.GONE
+            binding.progressCircular.visibility = if (it) View.VISIBLE else View.GONE
         })
 
         viewModel.listMediaSingleLiveEvent.observe(this, Observer { result ->
             mediaAdapter.submitList(result.first)
-            when(result.second) {
+            when (result.second) {
                 true -> {
                     binding.cardviewUnableToConnect.visibility = View.GONE
                 }
@@ -71,8 +68,10 @@ class MainActivity: BaseActivity<MainState, MainViewModel>() {
     private fun getMedia() = viewModel.getMedia()
 
     override fun onStateChange(state: MainState) {
-        when(state) {
-            MainState.IDLE -> {}
+        when (state) {
+            MainState.IDLE -> {
+                getMedia()
+            }
         }
     }
 }

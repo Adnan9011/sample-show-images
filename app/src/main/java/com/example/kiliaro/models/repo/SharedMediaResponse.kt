@@ -31,7 +31,7 @@ data class SharedMediaResponse(
     val resX: Int,
     @SerializedName("resy")
     val resY: Int
-    ) {
+) {
     fun toSharedMediaUi(): SharedMediaUi = SharedMediaUi(
         id = id,
         size = size,

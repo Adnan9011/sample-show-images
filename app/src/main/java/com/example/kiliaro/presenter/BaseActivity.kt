@@ -9,7 +9,7 @@ import com.example.kiliaro.common.longToast
 
 abstract class BaseActivity<S, T : BaseViewModel<S>> : AppCompatActivity() {
 
-    val TAG by lazy {this::class.simpleName}
+    val TAG by lazy { this::class.simpleName }
 
     abstract val viewModel: T
 
@@ -22,14 +22,14 @@ abstract class BaseActivity<S, T : BaseViewModel<S>> : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.state.observe(this , Observer {
-            if(it != null) {
+        viewModel.state.observe(this, Observer {
+            if (it != null) {
                 onStateChange(it)
                 viewModel.onStateUpdated()
             }
         })
 
-        viewModel.message.observe(this , Observer {
+        viewModel.message.observe(this, Observer {
             if (it == null) return@Observer
 
             showMessage(message = it)

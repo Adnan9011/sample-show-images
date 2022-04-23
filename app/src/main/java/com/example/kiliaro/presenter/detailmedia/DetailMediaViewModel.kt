@@ -8,4 +8,4 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailMediaViewModel @Inject constructor(
     app: Application
-): BaseViewModel<DetailMediaState>(DetailMediaState.IDLE, app)
+) : BaseViewModel<DetailMediaState>(DetailMediaState.IDLE, app)

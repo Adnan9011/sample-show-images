@@ -2,7 +2,6 @@ package com.example.kiliaro.common.widget
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.cardview.widget.CardView
 import com.google.android.material.card.MaterialCardView
 
 class SquareCardView(context: Context, attrs: AttributeSet? = null) :

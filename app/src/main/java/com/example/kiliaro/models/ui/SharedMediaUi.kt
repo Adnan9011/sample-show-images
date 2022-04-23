@@ -8,15 +8,16 @@ import java.util.*
 
 @Parcelize
 data class SharedMediaUi(
-    val id:String,
+    val id: String,
     val size: Long,
     val createAt: Calendar?,
     val thumbnailUrl: String,
     val downloadUrl: String
-    ): Parcelable {
+) : Parcelable {
     fun getSizeOfImage(): String {
-        return String.format("%.1f", (size/1024f)/1024f)+" MB"
+        return String.format("%.1f", (size / 1024f) / 1024f) + " MB"
     }
+
     fun getFullDate(): String {
         return createAt?.run {
             val str = StringBuilder()
@@ -26,21 +27,22 @@ data class SharedMediaUi(
             str.append(" ")
             str.append(this.get(Calendar.YEAR))
             str.append(", ")
-            if(this.get(Calendar.HOUR_OF_DAY)>9)
+            if (this.get(Calendar.HOUR_OF_DAY) > 9)
                 str.append(this.get(Calendar.HOUR_OF_DAY))
             else
-                str.append("0"+this.get(Calendar.HOUR_OF_DAY))
+                str.append("0" + this.get(Calendar.HOUR_OF_DAY))
             str.append(":")
-            if(this.get(Calendar.MINUTE)>9)
+            if (this.get(Calendar.MINUTE) > 9)
                 str.append(this.get(Calendar.MINUTE))
             else
-                str.append("0"+this.get(Calendar.MINUTE))
+                str.append("0" + this.get(Calendar.MINUTE))
 
             str.toString()
         }
             ?: "Missing date of created"
     }
-    fun getThumbnailUrl(width: Int,height: Int,scaleType: ScaleType=ScaleType.CROP): String {
+
+    fun getThumbnailUrl(width: Int, height: Int, scaleType: ScaleType = ScaleType.CROP): String {
         val str = StringBuilder()
         str.append(thumbnailUrl)
         str.append("?")
@@ -56,7 +58,7 @@ data class SharedMediaUi(
         return str.toString()
     }
 
-    enum class ScaleType(val type:String) {
+    enum class ScaleType(val type: String) {
         BOUND("bb"),
         CROP("crop"),
         MINIMUM("md");

@@ -11,13 +11,13 @@ import javax.inject.Inject
 
 class ResponseCodeInterceptor @Inject constructor(
     val gson: Gson
-): Interceptor {
+) : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder().build()
         val response = try {
             chain.proceed(request)
-        } catch (exp : SocketTimeoutException) {
+        } catch (exp: SocketTimeoutException) {
             throw NetworkException(ErrorMessages.NETWORK_TIMEOUT.toString())
         }
 

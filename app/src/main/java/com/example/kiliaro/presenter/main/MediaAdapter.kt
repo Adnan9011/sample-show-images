@@ -1,6 +1,5 @@
 package com.example.kiliaro.presenter.main
 
-import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,7 +30,8 @@ class MediaAdapter : ListAdapter<SharedMediaUi, BaseViewHolder>(DIFF_CALLBACK) {
         }
 
 
-    inner class MediaViewHolder(itemView: View, private val glide: RequestManager): BaseViewHolder(itemView) {
+    inner class MediaViewHolder(itemView: View, private val glide: RequestManager) :
+        BaseViewHolder(itemView) {
         val binding: ItemMediaBinding = ItemMediaBinding.bind(itemView)
 
         init {
@@ -43,7 +43,7 @@ class MediaAdapter : ListAdapter<SharedMediaUi, BaseViewHolder>(DIFF_CALLBACK) {
         override fun bind(position: Int) {
             val row = currentList[position]
 
-            if(binding.imgAlabum.measuredWidth == 0) {
+            if (binding.imgAlabum.measuredWidth == 0) {
                 val observer: ViewTreeObserver = binding.imgAlabum.viewTreeObserver
                 observer.addOnGlobalLayoutListener(object : OnGlobalLayoutListener {
                     override fun onGlobalLayout() {
@@ -52,28 +52,27 @@ class MediaAdapter : ListAdapter<SharedMediaUi, BaseViewHolder>(DIFF_CALLBACK) {
                         binding.imgAlabum.requestLayout()
                     }
                 })
-            }
-            else
+            } else
                 loadImage(glide, row, binding)
 
             binding.tvMediaSize.text = row.getSizeOfImage()
         }
     }
 
-    private fun loadImage(glide: RequestManager,row:SharedMediaUi,binding: ItemMediaBinding) =
+    private fun loadImage(glide: RequestManager, row: SharedMediaUi, binding: ItemMediaBinding) =
         glide.load(
             row.getThumbnailUrl(
                 width = binding.imgAlabum.measuredWidth,
                 height = binding.imgAlabum.measuredHeight
             )
-            )
+        )
             .diskCacheStrategy(DiskCacheStrategy.DATA)
             .into(binding.imgAlabum)
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) = holder.bind()
 
     companion object {
-        val DIFF_CALLBACK = object: DiffUtil.ItemCallback<SharedMediaUi>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<SharedMediaUi>() {
             override fun areItemsTheSame(oldItem: SharedMediaUi, newItem: SharedMediaUi) =
                 oldItem.id == newItem.id
 

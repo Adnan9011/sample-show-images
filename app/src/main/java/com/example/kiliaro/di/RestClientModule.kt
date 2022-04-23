@@ -44,7 +44,7 @@ class RestClientModule {
             else HttpLoggingInterceptor.Level.NONE
 
 
-        val cache = Cache(context.cacheDir, (10*1024*1024).toLong())
+        val cache = Cache(context.cacheDir, (10 * 1024 * 1024).toLong())
 
         return OkHttpClient.Builder()
             .addNetworkInterceptor(interceptor)
