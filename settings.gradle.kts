@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 
 }
 rootProject.name = "Kiliaro"
-include ':app'
+include("app")
